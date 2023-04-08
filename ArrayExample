@@ -1,0 +1,22 @@
+public void Play(string name)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
+            {
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
+            }
+            if (s.theme)
+            {
+                Stop(currentTheme);
+                currentTheme = s.name;
+                s.source.volume = 0; // set to zero for transition
+                s.source.Play();
+                StartCoroutine(Fade(s.source, 0, s.volume, s.transitionTime));//fade in
+            }
+            else
+            {
+                s.source.volume = s.volume;
+                s.source.Play();
+            }
+        }
