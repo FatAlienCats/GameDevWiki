@@ -1,15 +1,9 @@
 # wikiDemoCode
+This repository is a collection of code and notes I have made over the years. It contains two main sections, the wiki and the main repo. The wiki contains my thoughts and ideas about areas of game design and programming, it can be used as a cheat sheet when looking to find new ways to solve problems or just as some food for thought to start the creative juices flowing. Whilst the repo contains scripts I have found to be resusable between projects, i have organised them per game engine and will try to include documentation as best I can.
 
-Basic workflow for building the git repo:
-1. Unity project for testing the code
-2. 
+If you find this repository useful and wish to help support the upkeep of it you will be able to sign up as a patreon in the near future. Stay tuned for updates on this! 
 
 
-test code snippet
-```csharp
-void Movement3D(vector3 direction, float movementSpeed)
-{
-        rigidBody.velocity = new Vector3(direction.x * movementSpeed, rigidBody.velocity.y, direction.y * movementSpeed);
-
-}
-```
+Cheers, 
+Julian 
+Fat Alien Cat 
