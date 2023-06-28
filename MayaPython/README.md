@@ -1,0 +1,1 @@
+The scripts on these folders are an assortment of tools and modules that I have made over my years of working in the VFX and Animation industries. They are all designed to help speed up workflows in maya and save time.
