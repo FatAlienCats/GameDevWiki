@@ -14,7 +14,7 @@ def return_rig_to_bind():
     """
     Resets the rig to bind pose and removes all animation from rig.
     """
-    default_pose = "/mnt/production-data/StudioLibrary/BBF/Library/z_Misc/BindPoseAllControls.pose/pose.json"
+    default_pose = "PATH/TO/pose.json"
     sel = pm.selected()
     namespace = sel[0].namespace().replace(":", "")
     pm.currentTime(1001)
