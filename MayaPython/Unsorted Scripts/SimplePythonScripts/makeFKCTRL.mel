@@ -1,0 +1,61 @@
+global proc makeFKCTRL(){
+
+    //  variable for selected
+    string $objSel[] ;
+    //  command for selected objs
+    $objSel = `ls -sl`;
+    
+    float $rad = 5;
+    
+    // counter of how many selections
+    for ($i=0; $i<`size($objSel)`; $i++)
+        {
+            
+        // creates a shape for the controls    
+        circle -c 0 0 0 -nr 1 0 0 -sw 360 -r $rad -n ($objSel[$i] + "_CTRL");
+        // freeze transforms of the controls
+        makeIdentity -apply true -t 1 -r 1 -s 1 -n 0;
+        DeleteHistory;
+        //creates a group for the control
+        group -n ($objSel[$i] + "_offset");
+        //parentConstraints position to the joint alining the two
+        parentConstraint -n "deleteMe" $objSel[$i] ($objSel[$i] + "_offset");
+        delete "deleteMe";//deletes parentConstraint  
+        
+        //places orient constraint on the joint
+        orientConstraint -n ($objSel[$i] + "_orientConstraint") ($objSel[$i] + "_CTRL") $objSel[$i];
+       
+    
+        if ($i > 0) {
+            // measure how many joints are selected and if larger then 1 parent under previous control
+            parent ($objSel[$i] + "_offset") ($objSel[($i-1)] + "_CTRL");
+            
+        
+        }
+    }
+};
+makeFKCTRL();
+select -cl  ;
+select -r Finger1_FK_offset ;
+selectKey -clear ;
+// Result: 0 // 
+select -r Finger1_FK ;
+select -tgl Finger2_FK ;
+select -tgl Finger3_FK ;
+makeFKCTRL();
+select -r Finger1_FK_CTRL ;
+rotate -r -os -fo 0 0 -9.332098 ;
+SnapToGrid; dR_enterForSnap;
+select -r Finger2_FK_CTRL ;
+rotate -r -os -fo 0 0 41.175779 ;
+select -r Finger3_FK_CTRL ;
+rotate -r -os -fo 0 0 -60.671692 ;
+// Undo: rotate -r -os -fo 0 0 -60.671692  // 
+// Undo: select -r Finger3_FK_CTRL  // 
+// Undo: rotate -r -os -fo 0 0 41.175779  // 
+// Undo: select -r Finger2_FK_CTRL  // 
+// Undo: rotate -r -os -fo 0 0 -9.332098  // 
+select -r Finger1_FK_offset ;
+selectKey -clear ;
+// Result: 0 // 
+select -cl  ;

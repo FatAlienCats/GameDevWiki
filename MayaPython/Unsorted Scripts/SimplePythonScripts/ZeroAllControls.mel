@@ -1,0 +1,73 @@
+/***************************************************************
+       Zero out controls
+            By Julian Beiboer 2017
+    
+****************************************************************/
+{  
+    $controlsfk = `ls "*fk"`;
+    $controlsik = `ls "*ik"`;
+    $controlsother = `ls "*ctrl"`;
+    $axes = { "X", "Y", "Z"};
+    
+        // FK rotate
+        for($control in $controlsfk)
+        { 
+            for ($axis in $axes)
+            {
+                string $attribute_namefk = $control + ".rotate" + $axis;
+                string $attribute_namefk_translate = $control + ".translate" + $axis;
+              
+               if (!`getAttr -l $attribute_namefk`)
+               {
+                   setAttr $attribute_namefk 0;
+               }
+               if (!`getAttr -l $attribute_namefk_translate`)
+               {
+                   setAttr $attribute_namefk_translate 0;
+               } 
+            }
+        }
+    
+    //IK controls 
+    
+     for($control in $controlsik)
+    { 
+        for ($axis in $axes)
+        {
+            string $attribute_nameik_rotate = $control + ".rotate" + $axis;
+            string $attribute_nameik_translate = $control + ".translate" + $axis;
+          
+           if (!`getAttr -l $attribute_nameik_rotate`)
+           {
+               setAttr $attribute_nameik_rotate 0;
+           }
+           
+           if (!`getAttr -l $attribute_nameik_translate`)
+           {
+               setAttr $attribute_nameik_translate 0;
+           } 
+           
+        }
+    }
+    
+    //Other Controls 
+    for($control in $controlsother)
+    { 
+        for ($axis in $axes)
+        {
+            string $attribute_nameother_rotate = $control + ".rotate" + $axis;
+            string $attribute_nameother_translate = $control + ".translate" + $axis;
+          
+           if (!`getAttr -l $attribute_nameother_rotate`)
+           {
+               setAttr $attribute_nameother_rotate 0;
+           }
+           
+           if (!`getAttr -l $attribute_nameother_translate`)
+           {
+               setAttr $attribute_nameother_translate 0;
+           } 
+           
+        }
+    }
+}
