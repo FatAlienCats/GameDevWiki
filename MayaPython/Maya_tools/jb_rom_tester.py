@@ -16,7 +16,7 @@ logging.basicConfig()
 logger = logging.getLogger('RiggingTools')
 logger.setLevel(logging.DEBUG)
 
-ANIM = '/mnt/production-data/StudioLibrary/BBF/Library/z_Misc/Calisthenics/Betty_Calisthenics.anim'
+ANIM = 'PATH/TO/ANIM.anim'
 
 
 def apply_rom_to_rig():
