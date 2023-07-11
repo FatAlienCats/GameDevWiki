@@ -3,12 +3,14 @@ from shiboken2 import wrapInstance
 import maya.OpenMayaUI as omui
 import maya.cmds as cmds
 import maya.mel as mel
-import logger as logging
+import logging
+logging.basicConfig()
+logger = logging.getLogger('Soft Mod Tool')
+logger.setLevel(logging.DEBUG)
 import os
 import math
 import maya.api.OpenMaya as om
 UI_NAME = "SoftModUi"
-logger = logging.getLogger('Soft Mod Tool')
 
 
 class SoftModUi(QtWidgets.QMainWindow):
