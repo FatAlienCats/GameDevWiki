@@ -3,7 +3,7 @@ from shiboken2 import wrapInstance
 import maya.OpenMayaUI as omui
 import maya.cmds as cmds
 import maya.mel as mel
-from kore import logger as logging
+import logger as logging
 import os
 import math
 import maya.api.OpenMaya as om
@@ -18,7 +18,7 @@ class SoftModUi(QtWidgets.QMainWindow):
     geo = None
     soft_mod = None
     def __init__(self):
-        ui_file = os.path.join(cmds.getModulePath(mn="POP_FAMILY"), "ui/jb_softModControl.ui")  # file path to qt designer file
+        ui_file = "PATH TO MY COPY OF/jb_softModControl.ui")  # file path to qt designer file
         file = QtCore.QFile(ui_file)
         super(SoftModUi, self).__init__()
         try:
